@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+<ul>
+  {% for movie in object_list %}
+  {%if movie.year%}
+    <li>
+      {{ movie.name }} <br> Year: {{ movie.year }} <br> About: {{movie.description}}  <br> Rate: {{movie.rate}}
+    </li>
+  {%endif%}
+  {% endfor %}
+</ul>
+

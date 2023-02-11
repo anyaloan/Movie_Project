@@ -1,0 +1,50 @@
+<html lang="en">
+{%load static%}
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>{% block title %}MOVIE{% endblock %}</title>
+</head>
+<body>
+
+<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+    <a class="navbar-brand" href="#">Movie Website</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Movies</a>
+            </li>
+
+			<li class="nav-item active">
+                <a class="nav-link" href="{% url 'index1' %}">Actors</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'add_actor' %}">ActorForm</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'add-movie' %}">MovieForm</a>
+            </li>
+		</div>
+
+
+</div>
+
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</html>

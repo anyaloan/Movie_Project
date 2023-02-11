@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Actors|Page{% endblock %}
+
+{% block content %}
+<body>
+<div>
+    <form action="{% url 'search_actor' %}" method="get" class="form-inline mt-2 mt-md-0">
+            <input name="A" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+</div>
+
+{%for actor in actors%}
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
+          <a href="{%url 'detail' pk=actor.pk %}">
+        <img class="img-thumbnail mb-3" src="{%if actor.image%}{{actor.image.url}}{%endif%}" alt="" width="960" height="600">
+    </a>
+          <h5 class="mb-1">   {{actor.name}} {{actor.last_name}}</h5>
+          <h4 class="mb-1">{{actor.average_movie_rate}}</h4>
+      </div>
+      </div>
+
+{%endfor%}
+<div class="pagination">
+    <span class="step-links">
+        {% if actors.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ actors.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ actors.number }} of {{ actors.paginator.num_pages }}.
+        </span>
+
+        {% if actors.has_next %}
+            <a href="?page={{ actors.next_page_number }}">next</a>
+            <a href="?page={{ actors.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+{%endblock%}
